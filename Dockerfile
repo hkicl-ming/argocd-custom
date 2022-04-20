@@ -1,7 +1,7 @@
-FROM argoproj/argocd:v2.1.7
+FROM argoproj/argocd:v2.3.3
 
-ARG SOPS_VERSION="v3.7.1"
-ARG HELM_SECRETS_VERSION="2.0.2"
+ARG SOPS_VERSION="v3.7.2"
+ARG HELM_SECRETS_VERSION="v3.13.0"
 
 USER root
 COPY helm-wrapper.sh /usr/local/bin/
@@ -22,5 +22,5 @@ RUN apt-get update  --allow-insecure-repositories --allow-unauthenticated && \
 
 # helm secrets plugin should be installed as user argocd or it won't be found
 USER argocd
-RUN /usr/local/bin/helm.bin plugin install https://github.com/zendesk/helm-secrets --version ${HELM_SECRETS_VERSION}
+RUN /usr/local/bin/helm.bin plugin install https://github.com/jkroepke/helm-secrets --version ${HELM_SECRETS_VERSION}
 ENV HELM_PLUGINS="/home/argocd/.local/share/helm/plugins/"
