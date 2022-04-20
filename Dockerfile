@@ -1,7 +1,7 @@
-FROM argoproj/argocd:v2.3.3
+FROM argoproj/argocd:v2.2.6
 
-ARG SOPS_VERSION="v3.7.2"
-ARG HELM_SECRETS_VERSION="v3.13.0"
+ARG SOPS_VERSION="v3.7.1"
+ARG HELM_SECRETS_VERSION="v3.11.0"
 
 USER root
 COPY helm-wrapper.sh /usr/local/bin/
